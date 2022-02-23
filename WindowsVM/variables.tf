@@ -8,6 +8,13 @@ variable "location" {
     description = "Location for all resources"
 }
 
+
+variable "server_name" {
+    type        = string
+    description = "server name"
+}
+
+
 variable "admin_username" {
     type = string
     description = "Administrator username for server"
@@ -18,9 +25,14 @@ variable "admin_password" {
     description = "Administrator password for server"
 }
 
-variable "servername" {
-    type = string
-    description = "Server name of the virtual machine"
+variable "managed_disk_type" { 
+    type = map
+    description = "Disk type Premium in Primary location Standard in DR location"
+
+    default = {
+        westus2 = "Premium_LRS"
+        eastus = "Standard_LRS"
+    }
 }
 
 variable "vm_size" {
@@ -37,4 +49,8 @@ variable "os" {
         sku = string
         version = string
   })
-}      
+}
+variable "secret_name" {
+    type = string
+    description = "Keyvaault secret"
+}
