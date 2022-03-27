@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "resource_group" {
 
 # Create virtual network
 resource "azurerm_virtual_network" "resource_group" {
-  name                = "resource_group-${var.virtual_network_name}"
+  name                = "VM-network"
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
@@ -93,6 +93,30 @@ resource "azurerm_network_interface" "resource_group" {
   os_profile_windows_config {
   }
 }
+
+resource "azurerm_network_security_group" "resource_group" {
+  name                = "nsg-prd01"
+  location            = "eastus2"
+  resource_group_name = azurerm_resource_group.resource_group.name
+ 
+}
+
+resource "azurerm_network_security_rule" "NSG-Rule" {
+  for_each                    = local.nsgrules 
+  name                        = each.key
+  direction                   = each.value.direction
+  access                      = each.value.access
+  priority                    = each.value.priority
+  protocol                    = each.value.protocol
+  source_port_range           = each.value.source_port_range
+  destination_port_range      = each.value.destination_port_range
+  source_address_prefix       = each.value.source_address_prefix
+  destination_address_prefix  = each.value.destination_address_prefix
+  resource_group_name         = azurerm_resource_group.resource_group.name
+  network_security_group_name = azurerm_network_security_group.resource_group.name
+}
+
+
 #Keyvault Creation
 resource "azurerm_key_vault" "resource_group" {
   name                        = "kvaultprd01"

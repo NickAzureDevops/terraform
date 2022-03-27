@@ -14,10 +14,6 @@ variable "server_name" {
     description = "server name"
 }
 
-variable "virtual_network_name" {
-    type        = string
-    description = "VM-network"
-}
 
 variable "admin_username" {
     type = string

@@ -1,3 +1,10 @@
+provider "azurerm" {
+    version = "~>2.0"
+    features {}
+}
+ 
+data "azurerm_client_config" "current" {}
+ 
 #Create Resource Group
 resource "azurerm_resource_group" "resource_group" {
   name     = var.resource_group
@@ -16,6 +23,7 @@ resource "azurerm_storage_account" "storage_account" {
  
   static_website {
     index_document = "index.html"
+    Error_document = "404.html"
   }
 }
  
