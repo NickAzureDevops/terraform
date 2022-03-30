@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "LinuxScaleSet" {
-  name     = "example-resources"
+  name     = var.resourceGroupName
   location = "West Europe"
 }
 
