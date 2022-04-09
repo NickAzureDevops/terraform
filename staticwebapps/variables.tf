@@ -1,11 +1,9 @@
 variable "resource_group_name" {
-    type        = string
-    description = "Resource group name"
+    default = "rg-blogExample"
 }
 
 variable "blog_name" {
-    type        = string
-    description = "Blog name"
+    default = "ExampleBlog"
 }
 variable "location" {
     default = "West Europe"
@@ -16,8 +14,4 @@ variable "log_analytics_name" {
 
 variable "applicationinsights_name" {
   default = "appinsights-blog"
-}
-
-variable "retention_period" {
-  default = "30"
 }
