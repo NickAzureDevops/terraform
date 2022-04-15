@@ -15,17 +15,6 @@ variable "storage_type"{
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
 resource "azurerm_storage_account" "example" {
   name                = "storageaccountname"
   resource_group_name = azurerm_resource_group.example.name
@@ -34,8 +23,6 @@ resource "azurerm_storage_account" "example" {
   account_tier             = element(split("_","var.storage_type"), 0)
   account_replication_type = element(split("_","var.storage_type"), 1)
 }
-
-
 
 
 # Data File

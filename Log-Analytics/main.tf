@@ -4,7 +4,7 @@
 
 
 # Create Resoruce Group
-resource "azurerm_resource_group" "default" {
+resource "azurerm_resource_group" "default" { 
   name     = "${var.name}-rg"
   location = var.location
 }

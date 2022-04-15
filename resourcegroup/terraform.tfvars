@@ -1,2 +1,0 @@
-resourceGroupName = "CloudskillsDevs"
-location = "UKSouth"
