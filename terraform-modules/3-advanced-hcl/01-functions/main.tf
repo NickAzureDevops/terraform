@@ -1,4 +1,3 @@
-
 #Split Use Case
 resource "azurerm_storage_account" "example" {
   name                = "storageaccountname"
@@ -8,13 +7,9 @@ resource "azurerm_storage_account" "example" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
-
-
 variable "storage_type"{
   default = "Standard_LRS"
-
 }
-
 resource "azurerm_storage_account" "example" {
   name                = "storageaccountname"
   resource_group_name = azurerm_resource_group.example.name
@@ -31,7 +26,7 @@ data "template_file" "init" {
     DNS_Server1 = "10.0.0.1"
     DNS_Server2 = "10.0.0.2"
   }
-
+}
 resource "azurerm_windows_virtual_machine" "vm" {
   name                  = "vmterraform"
   location              = azurerm_resource_group.rg.location
