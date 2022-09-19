@@ -25,7 +25,7 @@ stages :
           backendAzureRmStorageAccountName: 'storagestprd001'
           backendAzureRmContainerName: 'tfstate'
           backendAzureRmKey: 'dev.tfstate' 
-          workingDirectory: '$(System.DefaultWorkingDirectory)/application-gateway/'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/WindowsVM/'
       - task: TerraformTaskV1@0
         displayName: 'validate'
         inputs:
