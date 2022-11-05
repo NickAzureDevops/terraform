@@ -1,36 +1,35 @@
-variable "name" {
-  type        = string
-  description = "name of resource"
-}
-
 variable "location" {
   type        = string
   description = "location of resoure"
 }
-
-
 variable "environment" {
   type = string
 }
-
-variable "enable_autoscale" {
-  type        = bool
-  default     = false
+variable "appservice" {
+  type        = list(string)
+  description = "appservice name"
+  default     = ["frontend", "backend"]
+}
+variable "app_plan" {
+  type = map(object({
+    name     = string
+    os_type  = string
+    sku_name = string
+  }))
 }
 
 variable "app_plan_autoscale" {
   type = map(object({
-    name            = string
-    target_resource = string
-    metric_resource = string
+    name             = string
+    target_resource  = string
+    metric_resource  = string
+    enable_autoscale = bool
   }))
 }
-
 variable "profile_recurrence_days" {
-  type = list 
+  type        = list(any)
   description = "profile recurrence days "
 }
-
 
 variable "autoscale_rule" {
   type = list(object({
@@ -48,8 +47,6 @@ variable "autoscale_rule" {
     cooldown  = string
   }))
 }
-
-
 variable "autoscale_recurrence" {
   type = map(object({
     timezone = string
