@@ -16,7 +16,7 @@ resource "azurerm_service_plan" "app_plan" {
 # Linux web apps 
 resource "azurerm_linux_web_app" "app_service" {
   for_each            = toset(var.appservice)
-  name                = format("app-%s-autoascale", each.key)
+  name                = format("app-%s-autoscale", each.key)
   resource_group_name = azurerm_resource_group.rg.name
   location            = var.location
   service_plan_id     = azurerm_service_plan.app_plan[each.value].id
