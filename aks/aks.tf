@@ -46,7 +46,6 @@ resource "azurerm_kubernetes_cluster" "default" {
 
   }
 }
-
 data "azurerm_resource_group" "node_resource_group" {
   name = azurerm_kubernetes_cluster.default.node_resource_group
   depends_on = [
